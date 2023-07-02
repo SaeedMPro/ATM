@@ -121,11 +121,12 @@ int main() {
 
 /////////////////////////////////////////////////////////////////
 void startProgram(void) {
-    for (int i = 0; i < 24; ++i)
+     int i;
+    for (i = 0; i < 24; ++i)
         printf("_*");
     puts("");
     printf("%32s", "....Welcome....\n");
-    for (int i = 0; i < 24; ++i)
+    for (i = 0; i < 24; ++i)
         printf("_*");
     puts("");
     getchar();
@@ -385,7 +386,8 @@ int createAccount(void) {
 
         //Checking the number of characters.
         checkNum = 0;
-        for (int i = 0; i < PHONE_MAX - 1; ++i) {
+        int i;
+        for (i = 0; i < PHONE_MAX - 1; ++i) {
             if (isdigit(list[numberOfCustomer + 1].phoneNumber[i]))
                 checkNum++;
         }
@@ -405,7 +407,8 @@ int createAccount(void) {
 
         //Checking the number of characters.
         checkNum = 0;
-        for (int i = 0; i < CODE_MAX - 1; ++i) {
+        int i;
+        for (i = 0; i < CODE_MAX - 1; ++i) {
             if (isdigit(list[numberOfCustomer + 1].nationalCode[i]))
                 checkNum++;
         }
@@ -423,7 +426,8 @@ int createAccount(void) {
 
         //Checking the number of characters.
         checkNum = 0;
-        for (int i = 0; i < ID_MAX - 1; ++i) {
+        int i;
+        for (i = 0; i < ID_MAX - 1; ++i) {
             if (isdigit(list[numberOfCustomer + 1].idCard[i]))
                 checkNum++;
         }
@@ -441,7 +445,8 @@ int createAccount(void) {
 
         //Checking the number of characters.
         checkNum = 0;
-        for (int i = 0; i < PASS_MAX - 1; ++i) {
+        int i;
+        for (i = 0; i < PASS_MAX - 1; ++i) {
             if (isdigit(list[numberOfCustomer + 1].password[i]))
                 checkNum++;
         }
@@ -459,7 +464,8 @@ int createAccount(void) {
 
     } while (list[numberOfCustomer + 1].balance < 0);
 
-    for (int i = 1; i <= numberOfCustomer; ++i) {
+    int i;
+    for (i = 1; i <= numberOfCustomer; ++i) {
         if (strcmp(list[i].idCard, list[numberOfCustomer + 1].idCard) == 0) {
             printf("This number of ID card is already exist!\n");
             break;
@@ -493,7 +499,8 @@ int EditAccount(void) {
     printf("Please enter the desired number of ID card->");
     scanf("%s", cardNumber);
 
-    for (int j = 1; j <= numberOfCustomer; ++j) {
+    int j;
+    for (j = 1; j <= numberOfCustomer; ++j) {
         if (strcmp(cardNumber, list[j].idCard) == 0) {
             printf("New first name->");
             scanf("%s", list[j].firstName);
@@ -511,7 +518,8 @@ int EditAccount(void) {
 
                 //Checking the number of characters.
                 checkNum = 0;
-                for (int i = 0; i < PHONE_MAX - 1; ++i) {
+                int i;
+                for (i = 0; i < PHONE_MAX - 1; ++i) {
                     if (isdigit(list[j].phoneNumber[i]))
                         checkNum++;
                 }
@@ -531,7 +539,8 @@ int EditAccount(void) {
 
                 //Checking the number of characters.
                 checkNum = 0;
-                for (int i = 0; i < CODE_MAX - 1; ++i) {
+                int i;
+                for (i = 0; i < CODE_MAX - 1; ++i) {
                     if (isdigit(list[j].nationalCode[i]))
                         checkNum++;
                 }
@@ -549,7 +558,8 @@ int EditAccount(void) {
 
                 //Checking the number of characters.
                 checkNum = 0;
-                for (int i = 0; i < PASS_MAX - 1; ++i) {
+                int i;
+                for (i = 0; i < PASS_MAX - 1; ++i) {
                     if (isdigit(list[j].password[i]))
                         checkNum++;
                 }
@@ -575,7 +585,8 @@ void showRichest(void) {
     int numberOfCustomer = readingList(list);
     int max = 0, idMax;
 
-    for (int i = 1; i <= numberOfCustomer; ++i) {
+    int i;
+    for (i = 1; i <= numberOfCustomer; ++i) {
         if (list[i].balance > max) {
             max = list[i].balance;
             idMax = i;
@@ -611,7 +622,8 @@ void showTotalBalance(void) {
     int numberOfCustomer = readingList(list);
     float sum = 0.0;
 
-    for (int i = 1; i <= numberOfCustomer; ++i) {
+    int i;
+    for (i = 1; i <= numberOfCustomer; ++i) {
         sum += list[i].balance;
     }
     printf("______________________________________________________________\n");
@@ -628,7 +640,9 @@ void accountBalance(char idCard[]) {
     int numberOfCustomer = readingList(list);
     int id;
     printf("\n\\\\*******************ACCOUNT BALANCE*******************//\n");
-    for (int i = 1; i <= numberOfCustomer; ++i) {
+    
+    int i;
+    for (i = 1; i <= numberOfCustomer; ++i) {
         if (strcmp(idCard, list[i].idCard) == 0) {
             id = i;
         }
@@ -649,7 +663,9 @@ void cashTransfer(char idCard[]) {
     float money;
     char numCard[ID_MAX];
     printf("\n\\\\*******************CASH TRANSFER*******************//\n");
-    for (int i = 1; i <= numberOfCustomer; ++i) {
+    
+    int i;
+    for (i = 1; i <= numberOfCustomer; ++i) {
         if (strcmp(idCard, list[i].idCard) == 0) {
             senderId = i;
             break;
@@ -661,7 +677,8 @@ void cashTransfer(char idCard[]) {
     scanf("%s", numCard);
 
     if (money <= list[senderId].balance) {
-        for (int i = 1; i <= numberOfCustomer; ++i) {
+        int i;      
+        for (i = 1; i <= numberOfCustomer; ++i) {
             if (strcmp(numCard, list[i].idCard) == 0) {
                 receiverId = i;
 
@@ -696,7 +713,8 @@ void cashWithdrawal(char idCard[]) {
     int id;
     float money;
     printf("\n\\\\*******************CASH WITHDRAWAL*******************//\n");
-    for (int i = 1; i <= numberOfCustomer; ++i) {
+    int i;
+    for (i = 1; i <= numberOfCustomer; ++i) {
         if (strcmp(idCard, list[i].idCard) == 0) {
             id = i;
             break;
@@ -729,7 +747,8 @@ void recentAccountUpdates(char idCard[]) {
     readCashFile(listCash);
     int id;
     printf("\n\\\\*******************CASH WITHDRAWAL*******************//\n\n");
-    for (int i = 1; i <= numberOfCustomer; ++i) {
+    int i;
+    for (i = 1; i <= numberOfCustomer; ++i) {
         if (strcmp(idCard, list[i].idCard) == 0) {
             id = i;
             break;
@@ -739,7 +758,8 @@ void recentAccountUpdates(char idCard[]) {
     if (listCash[id].number > 0) {
         printf("  %-17s|  %-8s|  %-23s\n", "Transaction mod", "Amount", "ID receiver or sender");
         printf("________________________________________________________\n");
-        for (int i = 0; i < listCash[id].number; ++i) {
+        int i;
+        for (i = 0; i < listCash[id].number; ++i) {
             if (strcmpi(listCash[id].list[i].mod, "Transfer") == 0 ||
                 strcmpi(listCash[id].list[i].mod, "Withdrawal") == 0) {
 
@@ -776,7 +796,8 @@ void changePassword(char idCard[]) {
     int id;
     char pass[PASS_MAX];
     printf("\n\\\\*******************CHANGE PASSWORD*******************//\n");
-    for (int i = 1; i <= numberOfCustomer; ++i) {
+    int i;
+    for (i = 1; i <= numberOfCustomer; ++i) {
         if (strcmp(idCard, list[i].idCard) == 0) {
             id = i;
             break;
@@ -796,7 +817,8 @@ void changePassword(char idCard[]) {
 
             //Checking the number of characters.
             checkNum = 0;
-            for (int i = 0; i < PASS_MAX - 1; ++i) {
+            int i;
+            for (i = 0; i < PASS_MAX - 1; ++i) {
                 if (isdigit(list[id].password[i]))
                     checkNum++;
             }
@@ -873,36 +895,37 @@ void saveToCashFile(char mod[], float money, char accountId[], char targetId[]) 
     int numberOfCustomer = readingList(list);
 
     if (strcmp(mod, "Transfer") == 0) { //transfer section
-        int id, target;
-        for (int i = 1; i <= numberOfCustomer; ++i) {
+        int id, target, i;
+        for (i = 1; i <= numberOfCustomer; ++i) {
             if (strcmp(accountId, list[i].idCard) == 0) { // Origin ID
                 id = i;
                 break;
             }
         }
 
-        for (int i = 1; i <= numberOfCustomer; ++i) {
-            if (strcmp(targetId, list[i].idCard) == 0) { // destination ID
-                target = i;
+        int j;
+        for (j = 1; j <= numberOfCustomer; ++j) {
+            if (strcmp(targetId, list[j].idCard) == 0) { // destination ID
+                target = j;
                 break;
             }
         }
 
         //To move the sender's account transactions and add a new transaction
-        for (int i = listCash[id].number - 1; i >= 0; --i) {
-            strcpy(listCash[id].list[i + 1].mod, listCash[id].list[i].mod);
-            listCash[id].list[i + 1].money = listCash[id].list[i].money;
-            strcpy(listCash[id].list[i + 1].id, listCash[id].list[i].id);
+        for (j = listCash[id].number - 1; j >= 0; --j) {
+            strcpy(listCash[id].list[j + 1].mod, listCash[id].list[j].mod);
+            listCash[id].list[j + 1].money = listCash[id].list[j].money;
+            strcpy(listCash[id].list[j + 1].id, listCash[id].list[j].id);
         }
         strcpy(listCash[id].list[0].mod, "Transfer");
         listCash[id].list[0].money = money;
         strcpy(listCash[id].list[0].id, targetId);
 
         //To move the transactions of the recipient's account and add a new transaction
-        for (int i = listCash[id].number - 1; i >= 0; --i) {
-            strcpy(listCash[target].list[i + 1].mod, listCash[target].list[i].mod);
-            listCash[target].list[i + 1].money = listCash[target].list[i].money;
-            strcpy(listCash[target].list[i + 1].id, listCash[target].list[i].id);
+        for (j = listCash[id].number - 1; j >= 0; --j) {
+            strcpy(listCash[target].list[j + 1].mod, listCash[target].list[j].mod);
+            listCash[target].list[j + 1].money = listCash[target].list[j].money;
+            strcpy(listCash[target].list[j + 1].id, listCash[target].list[j].id);
         }
         strcpy(listCash[target].list[0].mod, "Deposit");
         listCash[target].list[0].money = money;
@@ -913,9 +936,11 @@ void saveToCashFile(char mod[], float money, char accountId[], char targetId[]) 
         if ((save = fopen("RecentAccountUpdates.txt", "w")) == NULL)
             puts("File could not be opened");
         else {
-            for (int i = 1; i <= numberOfCustomer; ++i) {
+             int i;
+            for (i = 1; i <= numberOfCustomer; ++i) {
                 fprintf(save, "%d\n", listCash[i].row);
-                for (int j = 0; j < listCash[i].number + 1; ++j) {
+                int j;
+                for (j = 0; j < listCash[i].number + 1; ++j) {
                     fprintf(save, "%s %.2f %s\n",
                             listCash[i].list[j].mod,
                             listCash[i].list[j].money,
@@ -932,15 +957,17 @@ void saveToCashFile(char mod[], float money, char accountId[], char targetId[]) 
 
     } else if (strcmp(mod, "Withdrawal") == 0) { //withdrawal section
         int id;
-        for (int i = 1; i <= numberOfCustomer; ++i) { // Account ID
-            if (strcmp(accountId, list[i].idCard) == 0) {
-                id = i;
+        int t;
+        for (t = 1; t <= numberOfCustomer; ++t) { // Account ID
+            if (strcmp(accountId, list[t].idCard) == 0) {
+                id = t;
                 break;
             }
         }
 
         //To move the current transaction information and add a new transaction
-        for (int i = listCash[id].number - 1; i >= 0; --i) {
+        int i;
+        for (i = listCash[id].number - 1; i >= 0; --i) {
             strcpy(listCash[id].list[i + 1].mod, listCash[id].list[i].mod);
             listCash[id].list[i + 1].money = listCash[id].list[i].money;
             strcpy(listCash[id].list[i + 1].id, listCash[id].list[i].id);
@@ -954,18 +981,21 @@ void saveToCashFile(char mod[], float money, char accountId[], char targetId[]) 
         if ((save = fopen("RecentAccountUpdates.txt", "w")) == NULL)
             puts("File could not be opened");
         else {
-            for (int i = 1; i <= numberOfCustomer; ++i) {
-                fprintf(save, "%d\n", listCash[i].row);
-                for (int j = 0; j < listCash[i].number + 1; ++j) {
+             int k;
+             for (k = 1; k <= numberOfCustomer; ++k) {
+                fprintf(save, "%d\n", listCash[k].row);
+                
+                int j;
+                for (j = 0; j < listCash[k].number + 1; ++j) {
                     fprintf(save, "%s %.2f %s\n",
-                            listCash[i].list[j].mod,
-                            listCash[i].list[j].money,
-                            listCash[i].list[j].id);
+                            listCash[k].list[j].mod,
+                            listCash[k].list[j].money,
+                            listCash[k].list[j].id);
 
-                    if (listCash[i].number + 1 > 10)
+                    if (listCash[k].number + 1 > 10)
                         break;
                 }
-                if (i == id)
+                if (k == id)
                     fprintf(save, "%c %.2f %c\n", 'e', 0.00, 'e');
             }
         }
@@ -982,10 +1012,13 @@ void readCashFile(CASH listCash[]) {
     if ((read = fopen("RecentAccountUpdates.txt", "r")) == NULL)
         puts("File could not be opened");
     else {
-        for (int i = 1; i <= numberOfCustomer; ++i) {
+         
+         int i;
+        for (i = 1; i <= numberOfCustomer; ++i) {
             fscanf(read, "%d", &listCash[i].row); // row user
 
-            for (int j = 0; j < 10; ++j) { //transactions
+            int j;
+            for (j = 0; j < 10; ++j) { //transactions
                 fscanf(read, "%s %f %s\n",
                        listCash[i].list[j].mod,
                        &listCash[i].list[j].money,
@@ -1005,11 +1038,12 @@ void readCashFile(CASH listCash[]) {
 void endProgram(void) {
     system("cls");
     puts("");
-    for (int i = 0; i < 24; ++i)
+    int i;
+    for (i = 0; i < 24; ++i)
         printf("_*");
     puts("");
     printf("%40s", "....Thanks for your confidence....\n");
-    for (int i = 0; i < 24; ++i)
+    for (i = 0; i < 24; ++i)
         printf("_*");
     puts("");
     getch();
